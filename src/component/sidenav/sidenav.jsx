@@ -17,14 +17,14 @@ function Sidenav() {
 
   return (
     <aside className="flex flex-col items-center bg-white text-gray-700 shadow h-full md:w-50 lg:w-56 md:items-start md:overflow-hidden">
-      <div className="h-16 flex items-center w-full shadow-md md:rounded-b-3xl">
-        <a className="h-6 w-6 mx-auto" href=".">
-          <img
-            className="h-6 w-6 mx-auto"
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Svelte_Logo.svg/512px-Svelte_Logo.svg.png"
-            alt="logo"
-          />
-        </a>
+      <div className="flex md:flex-col lg:flex-row md:w-full justify-center items-center p-2 space-x-4 shadow-md">
+        <img src="https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png" alt="" className="w-12 h-12 rounded-full" />
+        <div className="hidden md:block">
+          <h2 className="text-lg font-semibold">Betse Sebe</h2>
+          <span className="flex md:justify-center items-center space-x-1">
+            <a href="." className="text-xs hover:underline dark:text-gray-400">View profile</a>
+          </span>
+        </div>
       </div>
       <ul className="w-full mt-2">
         {navItems.map((element) => (
