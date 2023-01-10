@@ -5,11 +5,13 @@ import Reservation from './component/pages/reservation';
 import Reserve from './component/pages/reserve';
 import CreateEvent from './component/pages/new_event';
 import DeleteEvent from './component/pages/delete_event';
+import Login from './component/pages/login';
+import Signup from './component/pages/signup';
 
 function App() {
   return (
     <Router>
-      <div className="h-screen w-screen flex bg-gray-200">
+      <div className="min-h-screen w-full flex bg-gray-200">
         <Sidenav />
         <Routes>
           <Route>
@@ -18,6 +20,8 @@ function App() {
             <Route path="/reserve" element={<Reserve />} />
             <Route path="/create-event" element={<CreateEvent />} />
             <Route path="/delete-event" element={<DeleteEvent />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<Signup />} />
           </Route>
         </Routes>
       </div>
