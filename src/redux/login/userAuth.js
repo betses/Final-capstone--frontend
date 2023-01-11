@@ -6,11 +6,11 @@ const getUser = (data) => async (dispatch) => {
   const final = await result.json();
   const me = final.filter((m) => m.username === data);
   if (me.length === 0) {
-    alert('username does not exist');
-  } else {
-    const arr = me[0];
-    dispatch(logInUser(arr));
+    // alert('username does not exist');
+    return 'The user does not exist';
   }
+  const arr = me[0];
+  return dispatch(logInUser(arr));
 };
 export const createUser = (data) => (dispatch) => {
   fetch('http://127.0.0.1:3000/users', {
@@ -18,10 +18,8 @@ export const createUser = (data) => (dispatch) => {
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(data),
   }).then(async (response) => {
-    console.log(response);
     if (response.status === 201) {
       const final = await response.json();
-      console.log(final);
       dispatch(signUp(final));
     }
   });

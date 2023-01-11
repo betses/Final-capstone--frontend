@@ -6,6 +6,7 @@ import getUser from '../../redux/login/userAuth';
 export default function Login() {
   const user = useSelector((store) => store.user);
   const [updated, setUpdated] = useState('');
+  const [error, setError] = useState('');
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const handleChange = (event) => {
@@ -14,7 +15,11 @@ export default function Login() {
   const handleSubmit = (event) => {
     // 👇 "message" stores input field value
     event.preventDefault();
-    dispatch(getUser(updated));
+    // dispatch(getUser(updated));
+    dispatch(getUser(updated))
+      .then((payload) => {
+        setError(payload);
+      });
   };
 
   useEffect(() => {
@@ -22,6 +27,8 @@ export default function Login() {
     // console.log(exist);
     // console.log(user);
     if (user != null && exist > 0) {
+      const users = user[0];
+      localStorage.setItem('user', JSON.stringify(users));
       navigate('/');
     }
   }, [navigate, user]);
@@ -31,6 +38,7 @@ export default function Login() {
       <div className="w-full h-min max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow-md sm:p-6 md:p-8">
         <form className="space-y-6" action="#" onSubmit={handleSubmit}>
           <h5 className="text-xl font-medium text-gray-900 text-center underline underline-offset-1">Sign in</h5>
+          <p>{error}</p>
           <div>
             <input onChange={handleChange} type="username" name="username" id="username" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Username" required />
           </div>
