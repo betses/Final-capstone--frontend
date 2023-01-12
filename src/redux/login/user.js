@@ -23,5 +23,4 @@ const userReducer = (state = user, action) => {
   }
 };
 
-
 export default userReducer;

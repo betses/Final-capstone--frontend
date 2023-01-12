@@ -18,10 +18,9 @@ export const createUser = (data) => (dispatch) => {
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(data),
   }).then(async (response) => {
-    
     if (response.status === 201) {
       const final = await response.json();
-      
+
       dispatch(signUp(final));
     }
   });

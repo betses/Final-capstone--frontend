@@ -16,7 +16,7 @@ function Sidenav() {
   ];
 
   return (
-    <aside className="flex flex-col items-center bg-white text-gray-700 shadow-inner md:items-start md:overflow-hidden">
+    <aside className="flex flex-col items-center bg-white text-gray-700 shadow-inner md:items-start ">
       <div className="flex md:flex-col lg:flex-row md:w-full justify-center items-center px-2 py-5 space-x-4 shadow-md">
         <img src="https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png" alt="" className="w-10 h-10 md:w-12 md:h-12 rounded-full" />
         <div className="hidden md:block">
