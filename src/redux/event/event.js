@@ -35,17 +35,16 @@ export const getEvent = () => async (dispatch) => {
     // const res = result.data;
     const res = await result.json();
     const me = res.filter((m) => m.user_id === local.id);
-    // console.log(res);
     dispatch(getAllEvent(me));
   });
 };
 
-export const deleteEvent = (data) => () => {
+export const deleteEvent = (data) => (dispatch) => {
   fetch(`https://eventifyhub.herokuapp.com/events/${data}`, {
     method: 'DELETE',
   }).then(async (response) => {
     if (response.status === 200) {
-      getEvent();
+      dispatch(getEvent());
     }
   });
 };

@@ -26,22 +26,34 @@ function Sidenav() {
   ];
 
   return (
-    <aside className="flex flex-col items-center bg-white text-gray-700 shadow-inner md:items-start md:overflow-hidden">
+    <aside className="flex flex-col items-center text-gray-700 bg-white shadow-inner shrink-0 md:items-start md:overflow-hidden">
       {user.length > 0 ? (
-        <div className="flex md:flex-col lg:flex-row md:w-full justify-center items-center px-2 py-5 space-x-4 shadow-md">
-          <img src="https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png" alt="" className="w-10 h-10 md:w-12 md:h-12 rounded-full" />
+        <div className="flex items-center justify-center px-2 py-5 space-x-4 shadow-md md:flex-col lg:flex-row md:w-full">
+          <img
+            src="https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png"
+            alt=""
+            className="w-10 h-10 rounded-full md:w-12 md:h-12"
+          />
           <div className="hidden md:block">
             <h2 className="text-lg font-semibold">{user[0].username}</h2>
-            <span className="flex md:justify-center items-center space-x-1">
-              <a href="." className="text-xs hover:underline dark:text-gray-400">View profile</a>
+            <span className="flex items-center space-x-1 md:justify-center">
+              <a
+                href="."
+                className="text-xs hover:underline dark:text-gray-400"
+              >
+                View profile
+              </a>
             </span>
           </div>
         </div>
       ) : (
-        <NavLink to="/login" className="flex w-full justify-center items-center px-2 py-5 space-x-4 shadow-md">
+        <NavLink
+          to="/login"
+          className="flex items-center justify-center w-full px-2 py-5 space-x-4 shadow-md"
+        >
           <button
             type="button"
-            className="bg-slate-700 text-white p-2 rounded-lg hover:bg-slate-500 px-10"
+            className="p-2 px-10 text-white rounded-lg bg-slate-700 hover:bg-slate-500"
           >
             Sign In
           </button>
@@ -53,27 +65,29 @@ function Sidenav() {
           <li className="hover:bg-gray-100" key={element.icon}>
             <NavLink
               to={element.link}
-              className="h-16 px-4 flex justify-center md:justify-start  items-center md:gap-5 transform md:hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800"
+              className="flex items-center justify-center h-16 px-4 text-gray-500 transition-transform duration-200 ease-in transform md:justify-start md:gap-5 md:hover:translate-x-2 hover:text-gray-800"
             >
               <img
-                className="h-5 w-5 mx-auto md:mx-0 font-bold"
+                className="w-5 h-5 mx-auto font-bold md:mx-0"
                 src={element.icon}
                 alt="svelte logo"
               />
-              <span className="hidden md:block text-sm font-medium mx-auto md:mx-0 uppercase w-52">{element.label}</span>
+              <span className="hidden mx-auto text-sm font-medium uppercase md:block md:mx-0 w-52">
+                {element.label}
+              </span>
             </NavLink>
           </li>
         ))}
       </ul>
       {user.length > 0 ? (
-        <div className="mt-auto h-16 flex items-center w-full focus:text-orange-500 hover:bg-red-200 ">
+        <div className="flex items-center w-full h-16 mt-auto focus:text-orange-500 hover:bg-red-200 ">
           <button
             type="button"
             onClick={signMeOut}
-            className="h-16 mx-auto w-full  focus:outline-none px-4 flex justify-center md:justify-start  items-center md:gap-5 transform md:hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800"
+            className="flex items-center justify-center w-full h-16 px-4 mx-auto text-gray-500 transition-transform duration-200 ease-in transform focus:outline-none md:justify-start md:gap-5 md:hover:translate-x-2 hover:text-gray-800"
           >
             <svg
-              className="h-5 w-5 text-red-700"
+              className="w-5 h-5 text-red-700"
               xmlns="http://www.w3.org/2000/svg"
               width="24"
               height="24"
@@ -91,8 +105,9 @@ function Sidenav() {
             Sign Out
           </button>
         </div>
-      ) : (<div />)}
-
+      ) : (
+        <div />
+      )}
     </aside>
   );
 }

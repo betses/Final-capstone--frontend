@@ -42,9 +42,9 @@ export default function CreateEvent() {
   };
 
   return (
-    <div className="w-full flex justify-center">
-      <form className="w-1/2 h-min bg-white p-5 mt-10" id="create_form">
-        <h1 className="mt-4 mb-12 text-3xl font-extrabold text-gray-900 md:text-5xl lg:text-6xl text-center underline">
+    <div className="flex justify-center w-full">
+      <form className="w-1/2 p-5 mt-10 bg-white h-min" id="create_form">
+        <h1 className="mt-4 mb-12 text-3xl font-extrabold text-gray-900 md:text-5xl lg:text-6xl">
           <span className="text-transparent bg-clip-text bg-gradient-to-r to-[#6ea9f0] from-[#5294e2]">
             Add
           </span>
@@ -193,7 +193,7 @@ export default function CreateEvent() {
           </div>
         </div>
         <textarea
-          className="w-full px-2 py-3 bg-slate-100 rounded-md focus:outline-2 focus:outline-slate-500 my-2"
+          className="w-full px-2 py-3 my-2 rounded-md bg-slate-100 focus:outline-2 focus:outline-slate-500"
           onChange={updateValue}
           id="description"
           placeholder="Description"
