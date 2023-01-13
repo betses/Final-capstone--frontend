@@ -1,6 +1,6 @@
 import { signUp, logInUser } from './user';
 
-const url = 'http://127.0.0.1:3000/users';
+const url = 'https://eventifyhub.herokuapp.com/users';
 const getUser = (data) => async (dispatch) => {
   const result = await fetch(url);
   const final = await result.json();
@@ -12,8 +12,9 @@ const getUser = (data) => async (dispatch) => {
   const arr = me[0];
   return dispatch(logInUser(arr));
 };
+
 export const createUser = (data) => (dispatch) => {
-  fetch('http://127.0.0.1:3000/users', {
+  fetch('https://eventifyhub.herokuapp.com/users', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(data),
