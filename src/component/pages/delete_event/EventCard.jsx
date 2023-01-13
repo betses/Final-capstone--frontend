@@ -1,13 +1,14 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 import { DateTime } from 'luxon';
 import { useDispatch } from 'react-redux';
-import { deleteEvent } from '../../../redux/event/event';
 import {
   TrashIcon,
   MapPinIcon,
   CalendarDaysIcon,
   ClockIcon,
 } from '@heroicons/react/24/outline';
+import { deleteEvent } from '../../../redux/event/event';
 
 export default function EventCard({ event }) {
   const dispatch = useDispatch();
@@ -25,7 +26,8 @@ export default function EventCard({ event }) {
           />
         </div>
         <p className="absolute px-3 py-1 text-xs font-semibold bg-white rounded-md left-4 top-4">
-          ${event.price}
+          $
+          {event.price}
         </p>
         <button
           type="button"

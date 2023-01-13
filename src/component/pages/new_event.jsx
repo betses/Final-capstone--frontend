@@ -43,8 +43,8 @@ export default function CreateEvent() {
 
   return (
     <div className="flex justify-center w-full">
-      <form className="w-1/2 p-5 mt-10 bg-white h-min" id="create_form">
-        <h1 className="mt-4 mb-12 text-3xl font-extrabold text-gray-900 md:text-5xl lg:text-6xl">
+      <form className=" p-5 lg:mt-10 bg-white h-min" id="create_form">
+        <h1 className="mt-4 mb-12 text-2xl font-extrabold text-gray-900 md:text-4xl lg:text-5xl">
           <span className="text-transparent bg-clip-text bg-gradient-to-r to-[#6ea9f0] from-[#5294e2]">
             Add
           </span>

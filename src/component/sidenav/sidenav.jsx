@@ -1,11 +1,13 @@
 import { NavLink } from 'react-router-dom';
 import React from 'react';
+import {
+  InboxIcon,
+  BookmarkIcon,
+  ShoppingCartIcon,
+  PlusCircleIcon,
+  TrashIcon,
+} from '@heroicons/react/24/outline';
 import { useDispatch, useSelector } from 'react-redux';
-import home from '../../assets/icon1.svg';
-import bookmark from '../../assets/icon2.svg';
-import remove from '../../assets/icon3.svg';
-import cart from '../../assets/icon4.svg';
-import add from '../../assets/icon5.svg';
 import { signOut } from '../../redux/login/user';
 
 function Sidenav() {
@@ -18,11 +20,21 @@ function Sidenav() {
   };
 
   const navItems = [
-    { icon: home, label: 'Events', link: '/' },
-    { icon: bookmark, label: 'My Reservation', link: '/my-reservations' },
-    { icon: cart, label: 'Reserve Event', link: '/reserve' },
-    { icon: add, label: 'Create Event', link: '/create-event' },
-    { icon: remove, label: 'Delete Event', link: '/delete-event' },
+    {
+      component: <InboxIcon className="h-5 w-5" />, label: 'Events', link: '/',
+    },
+    {
+      component: <BookmarkIcon className="h-5 w-5" />, label: 'My Reservation', link: '/my-reservations',
+    },
+    {
+      component: <ShoppingCartIcon className="h-5 w-5" />, label: 'Reserve Event', link: '/reserve',
+    },
+    {
+      component: <PlusCircleIcon className="h-5 w-5" />, label: 'Create Event', link: '/create-event',
+    },
+    {
+      component: <TrashIcon className="h-5 w-5" />, label: 'Delete Event', link: '/delete-event',
+    },
   ];
 
   return (
@@ -37,12 +49,13 @@ function Sidenav() {
           <div className="hidden md:block">
             <h2 className="text-lg font-semibold">{user[0].username}</h2>
             <span className="flex items-center space-x-1 md:justify-center">
-              <a
-                href="."
+              <button
+                type="button"
+                onClick={signMeOut}
                 className="text-xs hover:underline dark:text-gray-400"
               >
-                View profile
-              </a>
+                Log Out
+              </button>
             </span>
           </div>
         </div>
@@ -63,16 +76,12 @@ function Sidenav() {
       <ul className="w-full mt-2">
         {navItems.map((element) => (
           <NavLink
-            key={element.icon}
+            key={element.label}
             to={element.link}
             className={({ isActive }) => (isActive ? 'flex bg-gray-200' : 'flex hover:bg-gray-100')}
           >
             <li className=" flex items-center justify-center h-16 px-4 text-gray-500 transition-transform duration-200 ease-in transform md:justify-start md:gap-5 md:hover:translate-x-2 hover:text-gray-800">
-              <img
-                className="w-5 h-5 mx-auto font-bold md:mx-0"
-                src={element.icon}
-                alt="svelte logo"
-              />
+              {element.component}
               <span className="hidden mx-auto text-sm font-medium uppercase md:block md:mx-0 w-52">
                 {element.label}
               </span>
@@ -80,37 +89,7 @@ function Sidenav() {
           </NavLink>
         ))}
       </ul>
-      {
-        user.length > 0 ? (
-          <div className="flex items-center w-full h-16 mt-auto focus:text-orange-500 hover:bg-red-200 ">
-            <button
-              type="button"
-              onClick={signMeOut}
-              className="flex items-center justify-center w-full h-16 px-4 mx-auto text-gray-500 transition-transform duration-200 ease-in transform focus:outline-none md:justify-start md:gap-5 md:hover:translate-x-2 hover:text-gray-800"
-            >
-              <svg
-                className="w-5 h-5 text-red-700"
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
-                <polyline points="16 17 21 12 16 7" />
-                <line x1="21" y1="12" x2="9" y2="12" />
-              </svg>
-              Sign Out
-            </button>
-          </div>
-        ) : (
-          <div />
-        )
-      }
+      <div className="flex items-center w-full h-16 mt-auto focus:text-orange-500 hover:bg-red-200 " />
     </aside>
   );
 }
