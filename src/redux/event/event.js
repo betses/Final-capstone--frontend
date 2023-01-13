@@ -14,29 +14,30 @@ export const getAllEvent = (payload) => ({
   payload,
 });
 
-export const createEvent = (data) => (dispatch) => {
-  fetch(url, {
+export const createEvent = (data) => async (dispatch) => {
+  const response = await fetch(url, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(data),
-  }).then(async (response) => {
-    if (response.status === 201) {
-      const final = await response.json();
-      dispatch(addEvent(final));
-    }
   });
+
+  if (response.status === 201) {
+    const final = await response.json();
+    dispatch(addEvent(final));
+    return { message: 'the event has been created', status: true };
+  }
+  return { message: 'the event has not been created', status: false };
 };
 
 const eventurl = 'https://eventifyhub.herokuapp.com/events';
 export const getEvent = () => async (dispatch) => {
-  await fetch(eventurl)
-    .then(async (result) => {
-      // const res = result.data;
-      const res = await result.json();
-      const me = res.filter((m) => m.user_id === local.id);
-      // console.log(res);
-      dispatch(getAllEvent(me));
-    });
+  await fetch(eventurl).then(async (result) => {
+    // const res = result.data;
+    const res = await result.json();
+    const me = res.filter((m) => m.user_id === local.id);
+    // console.log(res);
+    dispatch(getAllEvent(me));
+  });
 };
 
 export const deleteEvent = (data) => () => {

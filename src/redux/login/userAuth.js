@@ -6,7 +6,6 @@ const getUser = (data) => async (dispatch) => {
   const final = await result.json();
   const me = final.filter((m) => m.username === data);
   if (me.length === 0) {
-    // alert('username does not exist');
     return 'The user does not exist';
   }
   const arr = me[0];
