@@ -62,11 +62,12 @@ function Sidenav() {
 
       <ul className="w-full mt-2">
         {navItems.map((element) => (
-          <li className="hover:bg-gray-100" key={element.icon}>
-            <NavLink
-              to={element.link}
-              className="flex items-center justify-center h-16 px-4 text-gray-500 transition-transform duration-200 ease-in transform md:justify-start md:gap-5 md:hover:translate-x-2 hover:text-gray-800"
-            >
+          <NavLink
+            key={element.icon}
+            to={element.link}
+            className={({ isActive }) => (isActive ? 'flex bg-gray-200' : 'flex hover:bg-gray-100')}
+          >
+            <li className=" flex items-center justify-center h-16 px-4 text-gray-500 transition-transform duration-200 ease-in transform md:justify-start md:gap-5 md:hover:translate-x-2 hover:text-gray-800">
               <img
                 className="w-5 h-5 mx-auto font-bold md:mx-0"
                 src={element.icon}
@@ -75,39 +76,41 @@ function Sidenav() {
               <span className="hidden mx-auto text-sm font-medium uppercase md:block md:mx-0 w-52">
                 {element.label}
               </span>
-            </NavLink>
-          </li>
+            </li>
+          </NavLink>
         ))}
       </ul>
-      {user.length > 0 ? (
-        <div className="flex items-center w-full h-16 mt-auto focus:text-orange-500 hover:bg-red-200 ">
-          <button
-            type="button"
-            onClick={signMeOut}
-            className="flex items-center justify-center w-full h-16 px-4 mx-auto text-gray-500 transition-transform duration-200 ease-in transform focus:outline-none md:justify-start md:gap-5 md:hover:translate-x-2 hover:text-gray-800"
-          >
-            <svg
-              className="w-5 h-5 text-red-700"
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
+      {
+        user.length > 0 ? (
+          <div className="flex items-center w-full h-16 mt-auto focus:text-orange-500 hover:bg-red-200 ">
+            <button
+              type="button"
+              onClick={signMeOut}
+              className="flex items-center justify-center w-full h-16 px-4 mx-auto text-gray-500 transition-transform duration-200 ease-in transform focus:outline-none md:justify-start md:gap-5 md:hover:translate-x-2 hover:text-gray-800"
             >
-              <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
-              <polyline points="16 17 21 12 16 7" />
-              <line x1="21" y1="12" x2="9" y2="12" />
-            </svg>
-            Sign Out
-          </button>
-        </div>
-      ) : (
-        <div />
-      )}
+              <svg
+                className="w-5 h-5 text-red-700"
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
+                <polyline points="16 17 21 12 16 7" />
+                <line x1="21" y1="12" x2="9" y2="12" />
+              </svg>
+              Sign Out
+            </button>
+          </div>
+        ) : (
+          <div />
+        )
+      }
     </aside>
   );
 }
