@@ -1,6 +1,7 @@
 const url = 'https://eventifyhub.herokuapp.com/events';
 const ADD_EVENT = 'ADD_EVENT';
 const GET_EVENTS = 'GET_EVENTS';
+const GET_ALL_EVENTS = 'GET_ALL_EVENTS';
 const local = JSON.parse(localStorage.getItem('user'));
 const events = [];
 
@@ -11,6 +12,10 @@ export const addEvent = (payload) => ({
 
 export const getAllEvent = (payload) => ({
   type: GET_EVENTS,
+  payload,
+});
+export const allEvents = (payload) => ({
+  type: GET_ALL_EVENTS,
   payload,
 });
 
@@ -39,6 +44,14 @@ export const getEvent = () => async (dispatch) => {
   });
 };
 
+export const getAllEvents = () => async (dispatch) => {
+  await fetch(eventurl).then(async (result) => {
+    // const res = result.data;
+    const res = await result.json();
+    dispatch(allEvents(res));
+  });
+};
+
 export const deleteEvent = (data) => (dispatch) => {
   fetch(`https://eventifyhub.herokuapp.com/events/${data}`, {
     method: 'DELETE',
@@ -54,6 +67,8 @@ const eventReducer = (state = events, action) => {
     case ADD_EVENT:
       return [action.payload];
     case GET_EVENTS:
+      return action.payload;
+    case GET_ALL_EVENTS:
       return action.payload;
     default:
       return state;
