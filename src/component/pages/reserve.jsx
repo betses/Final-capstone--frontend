@@ -28,14 +28,14 @@ export default function Reserve() {
   };
 
   const submitHandler = () => {
-    dispatch(createEvent(value)).then((payload) => {
-      if (payload.status) {
-        document.querySelector('#create_form').reset();
-        setSuccess(payload.message);
-      } else {
-        setError(payload.message);
-      }
-    });
+    // dispatch(createEvent(value)).then((payload) => {
+    //   if (payload.status) {
+    //     document.querySelector('#create_form').reset();
+    //     setSuccess(payload.message);
+    //   } else {
+    //     setError(payload.message);
+    //   }
+    // });
   };
 
   useEffect(() => {
