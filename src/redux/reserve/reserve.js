@@ -12,8 +12,8 @@ export const getAllReservation = (payload) => ({
   payload,
 });
 
-export const getAllEvents = () => async (dispatch) => {
-  await fetch(`https://eventifyhub.herokuapp.com/events/${data}/reserves`).then(
+export const getAllReserve = (id) => async (dispatch) => {
+  await fetch(`https://eventifyhub.herokuapp.com/events/${id}/reserves`).then(
     async (result) => {
       // const res = result.data;
       const res = await result.json();
