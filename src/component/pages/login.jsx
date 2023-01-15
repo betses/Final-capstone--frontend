@@ -39,7 +39,7 @@ export default function Login() {
       <div className="flex justify-center items-center w-3/5 bg-white">
         <div className="w-full h-min max-w-sm p-4">
           <form className="space-y-6" action="#" onSubmit={handleSubmit}>
-            <h5 className="text-3xl text-gray-900 text-center font-bold underline-offset-1">Sign In</h5>
+            <h5 className="text-3xl text-gray-900 text-center font-bold">Sign In</h5>
             <p>{error}</p>
             <div className="flex flex-col gap-3">
               <label className="uppercase text-xs tracking-wider font-semibold">Your username</label>

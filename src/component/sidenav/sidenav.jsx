@@ -38,7 +38,7 @@ function Sidenav() {
   ];
 
   return (
-    <aside className="flex flex-col items-center text-gray-700 bg-white shadow-inner shrink-0 md:items-start md:overflow-hidden">
+    <aside className="flex flex-col items-center text-gray-700 bg-white border shrink-0 md:items-start md:overflow-hidden">
       {user.length > 0 ? (
         <div className="flex items-center justify-center px-2 py-5 space-x-4 shadow-md md:flex-col lg:flex-row md:w-full">
           <img
