@@ -27,7 +27,7 @@ export default function Signup() {
   }, [navigate, user]);
   return (
     <div className="w-full flex">
-      <div className="flex justify-center items-center sm:w-full lg:w-3/5 bg-white">
+      <div className="flex justify-center items-center w-full lg:w-3/5 bg-white">
         <div className="w-full h-min max-w-sm p-4">
           <form className="space-y-6" action="#">
             <h5 className="text-3xl text-gray-900 text-center font-bold">Sign Up</h5>
@@ -44,9 +44,11 @@ export default function Signup() {
           </form>
         </div>
       </div>
-      <div className='hidden w-2/5 bg-cover bg-center text-white lg:flex flex-col justify-center items-center' style={{ backgroundImage: `url(${logInBackgroundIMG})` }}>
-        <p className="text-5xl font-bold">Hello, Friend!</p>
-        <p>Enter your personal detail and start journy with us</p>
+      <div className='hidden w-2/5 bg-cover bg-center text-white md:block' style={{ backgroundImage: `url(${logInBackgroundIMG})` }}>
+        <div className="flex flex-col items-center justify-center w-full h-full bg-black bg-opacity-50">
+          <p className="text-5xl font-bold">Hello, Friend!</p>
+          <p>Enter your personal detail and start journy with us</p>
+        </div>
       </div>
     </div>
   );
