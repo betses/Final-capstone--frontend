@@ -32,7 +32,7 @@ export default function Signup() {
           <form className="space-y-6" action="#">
             <h5 className="text-3xl text-gray-900 text-center font-bold">Sign Up</h5>
             <div className="flex flex-col gap-3 mt-5">
-              <label className="uppercase text-xs tracking-wider font-medium">Create Unique username</label>
+              <label className="uppercase text-xs tracking-wider font-medium">Create Your username</label>
               <input onChange={handleChange} type="username" name="username" id="username" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Username" required />
             </div>
             <button type="submit" onClick={handleClick} className="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Register your account</button>

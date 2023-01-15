@@ -7,6 +7,9 @@ import {
   PlusCircleIcon,
   TrashIcon,
 } from '@heroicons/react/24/outline';
+import {
+  ArrowRightOnRectangleIcon,
+} from '@heroicons/react/24/solid';
 import { useDispatch, useSelector } from 'react-redux';
 import { signOut } from '../../redux/login/user';
 
@@ -60,20 +63,26 @@ function Sidenav() {
           </div>
         </div>
       ) : (
-        <NavLink
-          to="/login"
-          className="flex items-center justify-center w-full px-2 py-5 space-x-4 shadow-md"
+        <div
+          className="flex items-center justify-center w-full md:py-5 border-b shadow-md"
         >
-          <button
-            type="button"
-            className="p-2 px-10 text-white rounded-lg bg-slate-700 hover:bg-slate-500"
+          <NavLink
+            to="/login"
+            className="hidden md:block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-10 py-2.5 text-center "
           >
             Sign In
-          </button>
-        </NavLink>
+
+          </NavLink>
+          <NavLink
+            to="/login"
+            className="md:hidden py-5 w-full flex justify-center bg-blue-700 text-white hover:bg-blue-800"
+          >
+            <ArrowRightOnRectangleIcon className="h-5 w-5" />
+          </NavLink>
+        </div>
       )}
 
-      <ul className="w-full mt-2">
+      <ul className="w-full mt-4">
         {navItems.map((element) => (
           <NavLink
             key={element.label}

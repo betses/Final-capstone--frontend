@@ -36,7 +36,13 @@ export default function Login() {
 
   return (
     <div className="flex w-full">
-      <div className="flex justify-center items-center w-3/5 bg-white">
+      <div className='hidden w-2/4 bg-cover bg-center text-white md:block' style={{ backgroundImage: `url(${backgroundIMG})` }}>
+        <div className="flex flex-col items-center justify-center w-full h-full bg-black bg-opacity-25">
+          <p className="text-5xl font-semibold px-6 text-center">Welcome Back!</p>
+          <p className="px-6 text-center">To keep connected with us please login with your personal info</p>
+        </div>
+      </div>
+      <div className="flex justify-center items-center w-full md:w-3/5 bg-white">
         <div className="w-full h-min max-w-sm p-4">
           <form className="space-y-6" action="#" onSubmit={handleSubmit}>
             <h5 className="text-3xl text-gray-900 text-center font-bold">Sign In</h5>
@@ -53,9 +59,6 @@ export default function Login() {
             </div>
           </form>
         </div>
-      </div>
-      <div className='w-2/5 bg-cover bg-center brightness-75' style={{ backgroundImage: `url(${backgroundIMG})` }}>
-        <p>asdfasdf</p>
       </div>
     </div>
   );
