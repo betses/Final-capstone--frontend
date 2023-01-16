@@ -7,6 +7,7 @@ import CreateEvent from './component/pages/new_event';
 import DeleteEvent from './component/pages/delete_event';
 import Login from './component/pages/login';
 import Signup from './component/pages/signup';
+import EventsDetails from './component/pages/events_details';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
             <Route path="/delete-event" element={<DeleteEvent />} />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
+            <Route path="/details/:id" element={<EventsDetails />} />
           </Route>
         </Routes>
       </div>

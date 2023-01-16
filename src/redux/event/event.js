@@ -1,6 +1,9 @@
+import { createAsyncThunk } from '@reduxjs/toolkit';
+
 const url = 'https://eventifyhub.herokuapp.com/events';
 const ADD_EVENT = 'ADD_EVENT';
 const GET_EVENTS = 'GET_EVENTS';
+const GET_SINGLE_EVENT = 'GET_SINGLE_EVENT';
 const local = JSON.parse(localStorage.getItem('user'));
 const events = [];
 
@@ -11,6 +14,11 @@ export const addEvent = (payload) => ({
 
 export const getAllEvent = (payload) => ({
   type: GET_EVENTS,
+  payload,
+});
+
+export const getSingleEvent = (payload) => ({
+  type: GET_SINGLE_EVENT,
   payload,
 });
 
@@ -39,6 +47,14 @@ export const getEvent = () => async (dispatch) => {
   });
 };
 
+export const getSingle = () => createAsyncThunk(GET_SINGLE_EVENT,
+  async (data, { dispatch }) => {
+    await fetch(`https://eventifyhub.herokuapp.com/events/${data}`).then(async (result) => {
+      const res = await result.json();
+      dispatch(getSingleEvent(res));
+    });
+  });
+
 export const deleteEvent = (data) => (dispatch) => {
   fetch(`https://eventifyhub.herokuapp.com/events/${data}`, {
     method: 'DELETE',
@@ -54,6 +70,8 @@ const eventReducer = (state = events, action) => {
     case ADD_EVENT:
       return [action.payload];
     case GET_EVENTS:
+      return action.payload;
+    case GET_SINGLE_EVENT:
       return action.payload;
     default:
       return state;
