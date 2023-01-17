@@ -9,14 +9,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import Carousel from '@itseasy21/react-elastic-carousel';
 import { Link } from 'react-router-dom';
 import { getEvents } from '../../redux/event/event';
-
+​
 export default function Events() {
-  const events = useSelector((store) => store.event);
+  const {events} = useSelector((store) => store.event);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getEvents());
   }, [dispatch]);
-
+​
   const breakPoints = [
     { width: 1, itemsToShow: 1 },
     { width: 560, itemsToShow: 2 },
@@ -80,7 +80,7 @@ export default function Events() {
           </Link>
         ))}
       </Carousel>
-
+​
     </div>
   );
 }
