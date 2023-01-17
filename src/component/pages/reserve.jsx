@@ -9,10 +9,9 @@ import { getEvents } from '../../redux/event/event';
 import background from '../../assets/danny-howe-bn-D2bCvpik-unsplash.jpg';
 
 export default function Reserve() {
+  // const user = useSelector((store) => store.user);
   const events = useSelector((store) => store.event);
   // const navigate = useNavigate();
-  // const user = useSelector((store) => store.user);
-  // const userID = user[0].id;
   const dispatch = useDispatch();
   // const dateNow = DateTime.now().toFormat('MMMM / dd / yyyy');
   const [value, setValue] = useState({
@@ -28,6 +27,7 @@ export default function Reserve() {
   };
 
   const submitHandler = () => {
+    // const userID = user[0].id;
     // dispatch(createEvent(value)).then((payload) => {
     //   if (payload.status) {
     //     document.querySelector('#create_form').reset();

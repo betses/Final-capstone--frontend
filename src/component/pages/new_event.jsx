@@ -1,12 +1,13 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { createEvent } from '../../redux/event/event';
 
 export default function CreateEvent() {
   const user = useSelector((store) => store.user);
-  const userID = user[0].id;
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [success, setSuccess] = useState('');
   const [error, setError] = useState('');
 
@@ -20,7 +21,6 @@ export default function CreateEvent() {
     organizer: '',
     location: '',
     price: '',
-    user_id: userID,
   });
 
   const updateValue = (e) => {
@@ -31,14 +31,23 @@ export default function CreateEvent() {
   };
 
   const submitHandler = () => {
-    dispatch(createEvent(value)).then((payload) => {
-      if (payload.status) {
-        document.querySelector('#create_form').reset();
-        setSuccess(payload.message);
-      } else {
-        setError(payload.message);
-      }
-    });
+    const userID = user[0].id;
+    const exist = Object.keys(user).length;
+    if (exist === 0) {
+      navigate('/login');
+    } else {
+      dispatch(createEvent({
+        ...value,
+        user_id: userID,
+      })).then((payload) => {
+        if (payload.status) {
+          document.querySelector('#create_form').reset();
+          setSuccess(payload.message);
+        } else {
+          setError(payload.message);
+        }
+      });
+    }
   };
 
   return (

@@ -46,14 +46,14 @@ export const getEvent = () => async (dispatch) => {
 export const getEvents = () => async (dispatch) => {
   await fetch(eventurl).then(async (result) => {
     const res = await result.json();
-    dispatch(getAllEvent(res));
+    dispatch(allEvents(res));
   });
 };
 
 export const getAnEvent = (id) => async (dispatch) => {
   await fetch(`https://eventifyhub.herokuapp.com/events/${id}`).then(async (result) => {
     const res = await result.json();
-    dispatch(getAllEvent(res));
+    dispatch(allEvents(res));
   });
 };
 

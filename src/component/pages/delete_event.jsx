@@ -1,14 +1,26 @@
 import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getEvent } from '../../redux/event/event';
 import EventCard from './delete_event/EventCard';
 
 export default function DeleteEvent() {
   const events = useSelector((store) => store.event);
+  const user = useSelector((store) => store.user);
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getEvent());
-  }, [dispatch]);
+    const exist = Object.keys(user).length;
+    if (exist === 0) {
+      navigate('/login');
+    } else {
+      dispatch(getEvent());
+    }
+  }, [dispatch, navigate, user]);
+
+  useEffect(() => {
+
+  }, [navigate, user]);
 
   return (
     <div className="px-10">
