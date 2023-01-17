@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@heroicons/react": "^2.0.13",
+    "@itseasy21/react-elastic-carousel": "^0.12.3",
     "@reduxjs/toolkit": "^1.9.1",
     "@vitejs/plugin-react": "^3.0.0",
     "luxon": "^3.2.1",

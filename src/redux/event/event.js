@@ -37,18 +37,23 @@ export const createEvent = (data) => async (dispatch) => {
 const eventurl = 'https://eventifyhub.herokuapp.com/events';
 export const getEvent = () => async (dispatch) => {
   await fetch(eventurl).then(async (result) => {
-    // const res = result.data;
     const res = await result.json();
     const me = res.filter((m) => m.user_id === local.id);
     dispatch(getAllEvent(me));
   });
 };
 
-export const getAllEvents = () => async (dispatch) => {
+export const getEvents = () => async (dispatch) => {
   await fetch(eventurl).then(async (result) => {
-    // const res = result.data;
     const res = await result.json();
-    dispatch(allEvents(res));
+    dispatch(getAllEvent(res));
+  });
+};
+
+export const getAnEvent = (id) => async (dispatch) => {
+  await fetch(`https://eventifyhub.herokuapp.com/events/${id}`).then(async (result) => {
+    const res = await result.json();
+    dispatch(getAllEvent(res));
   });
 };
 
