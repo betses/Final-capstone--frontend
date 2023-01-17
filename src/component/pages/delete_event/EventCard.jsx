@@ -18,7 +18,7 @@ export default function EventCard({ event }) {
       <div className="relative block shrink-0">
         <div className="relative w-full pt-[100%] hover:bg-slate-300">
           <img
-            className="absolute inset-0 rounded-t-lg cursor-pointer hover:brightness-75"
+            className="absolute inset-0 rounded-t-lg cursor-pointer hover:brightness-75 h-full w-full object-cover"
             src={
               event.image || 'https://flowbite.com/docs/images/blog/image-1.jpg'
             }
