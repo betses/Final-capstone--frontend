@@ -55,7 +55,7 @@ const EventsDetails = () => {
           <span>Organizer</span>
           <span>{organizer}</span>
         </div>
-        <Link to="/user/Reservation">
+        <Link to="/reserve">
           <button
             type="button"
             className="bg-green-500 mt-40 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full"

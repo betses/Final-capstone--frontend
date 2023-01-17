@@ -9,7 +9,7 @@ import { getEvents } from '../../redux/event/event';
 import { createReserve } from '../../redux/reserve/reserve';
 import background from '../../assets/danny-howe-bn-D2bCvpik-unsplash.jpg';
 
-export default function Reserve() {
+  const Reserve = () => {
   const user = useSelector((store) => store.user);
   const events = useSelector((store) => store.event);
   const navigate = useNavigate();
@@ -89,3 +89,5 @@ export default function Reserve() {
     </div>
   );
 }
+
+export default Reserve;
