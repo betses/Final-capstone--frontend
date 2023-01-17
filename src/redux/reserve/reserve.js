@@ -1,7 +1,7 @@
 const ADD_EVENT_RESERVE = 'ADD_EVENT_RESERVE';
 const GET_EVENTS_RESERVE = 'GET_EVENTS_RESERVE';
-// const GET_AN_EVENTS_RESERVE = 'GET_AN_EVENTS_RESERVE';
-// const local = JSON.parse(localStorage.getItem('user'));
+const GET_AN_EVENTS_RESERVE = 'GET_AN_EVENTS_RESERVE';
+const local = JSON.parse(localStorage.getItem('user'));
 const reservation = [];
 
 export const addReserve = (payload) => ({
@@ -14,10 +14,10 @@ export const getAllReservation = (payload) => ({
   payload,
 });
 
-// export const getAnReservation = (payload) => ({
-//   type: GET_AN_EVENTS_RESERVE,
-//   payload,
-// });
+export const getAnReservation = (payload) => ({
+  type: GET_AN_EVENTS_RESERVE,
+  payload,
+});
 
 export const getAllReserve = () => async (dispatch) => {
   await fetch('https://eventifyhub.herokuapp.com/reserves').then(
@@ -28,14 +28,14 @@ export const getAllReserve = () => async (dispatch) => {
     },
   );
 };
-// const reserveurl = 'https://eventifyhub.herokuapp.com/reserves';
-// export const getAReserve = () => async (dispatch) => {
-//   await fetch(reserveurl).then(async (result) => {
-//     const res = await result.json();
-//     const me = res.filter((m) => m.user_id === local.id);
-//     dispatch(getAnReservation(me));
-//   });
-// };
+const reserveurl = 'https://eventifyhub.herokuapp.com/reserves';
+export const getAReserve = () => async (dispatch) => {
+  await fetch(reserveurl).then(async (result) => {
+    const res = await result.json();
+    const me = res.filter((m) => m.user_id === local.id);
+    dispatch(getAnReservation(me));
+  });
+};
 
 export const createReserve = (data) => async (dispatch) => {
   const response = await fetch(
@@ -47,8 +47,7 @@ export const createReserve = (data) => async (dispatch) => {
     },
   );
   if (response.status === 201) {
-    const final = await response.json();
-    dispatch(addReserve(final));
+    dispatch(getAReserve());
     return { message: 'The event has been reserved', status: true };
   }
   return { message: 'The event has not been reserved', status: false };
@@ -59,7 +58,7 @@ export const deleteReserve = (data) => (dispatch) => {
     method: 'DELETE',
   }).then(async (response) => {
     if (response.status === 200) {
-      dispatch(getAllReserve());
+      dispatch(getAReserve());
     }
   });
 };
@@ -69,6 +68,8 @@ const reserveReducer = (state = reservation, action) => {
     case ADD_EVENT_RESERVE:
       return [action.payload];
     case GET_EVENTS_RESERVE:
+      return action.payload;
+    case GET_AN_EVENTS_RESERVE:
       return action.payload;
     default:
       return state;
