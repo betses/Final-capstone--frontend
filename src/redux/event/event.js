@@ -73,17 +73,26 @@ export const deleteEvent = (data) => (dispatch) => {
   });
 };
 
-const eventReducer = (state = events, action) => {
+const eventReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_EVENT:
-      return [action.payload];
-    case GET_EVENTS:
-      return action.payload;
+      return {
+        ...state,
+        message: [action.payload],
+      };
+    case GET_EVENT:
+      return {
+        ...state,
+        event: action.payload,
+      };
     case GET_ALL_EVENTS:
-      return action.payload;
+      return {
+        ...state,
+        events: action.payload,
+      };
     default:
       return state;
   }
 };
-
+​
 export default eventReducer;
