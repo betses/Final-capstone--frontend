@@ -1,8 +1,8 @@
-const url = "https://eventifyhub.herokuapp.com/events";
-const ADD_EVENT = "ADD_EVENT";
-const GET_EVENT = "GET_EVENT";
-const GET_ALL_EVENTS = "GET_ALL_EVENTS";
-const local = JSON.parse(localStorage.getItem("user"));
+const url = 'https://eventifyhub.herokuapp.com/events';
+const ADD_EVENT = 'ADD_EVENT';
+const GET_EVENT = 'GET_EVENT';
+const GET_ALL_EVENTS = 'GET_ALL_EVENTS';
+const local = JSON.parse(localStorage.getItem('user'));
 const initialState = {
   event: {},
   events: [],
@@ -25,20 +25,20 @@ export const allEvents = (payload) => ({
 
 export const createEvent = (data) => async (dispatch) => {
   const response = await fetch(url, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(data),
   });
 
   if (response.status === 201) {
     const final = await response.json();
     dispatch(addEvent(final));
-    return { message: "the event has been created", status: true };
+    return { message: 'the event has been created', status: true };
   }
-  return { message: "the event has not been created", status: false };
+  return { message: 'the event has not been created', status: false };
 };
 
-const eventurl = "https://eventifyhub.herokuapp.com/events";
+const eventurl = 'https://eventifyhub.herokuapp.com/events';
 export const getEvent = () => async (dispatch) => {
   await fetch(eventurl).then(async (result) => {
     const res = await result.json();
@@ -59,13 +59,13 @@ export const getAnEvent = (id) => async (dispatch) => {
     async (result) => {
       const res = await result.json();
       dispatch(anEvent(res));
-    }
+    },
   );
 };
 
 export const deleteEvent = (data) => (dispatch) => {
   fetch(`https://eventifyhub.herokuapp.com/events/${data}`, {
-    method: "DELETE",
+    method: 'DELETE',
   }).then(async (response) => {
     if (response.status === 200) {
       dispatch(getEvent());
