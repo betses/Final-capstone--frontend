@@ -98,7 +98,9 @@ function Sidenav() {
           </NavLink>
         ))}
       </ul>
-      <div className="flex items-center w-full h-16 mt-auto focus:text-orange-500 hover:bg-red-200 " />
+      <div className="flex items-center justify-center w-full h-16 mt-auto">
+        <p className="text-xs">&copy; 2023 Eventify</p>
+      </div>
     </aside>
   );
 }
