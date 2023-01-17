@@ -18,18 +18,18 @@ export const getAllReserve = (id) => async (dispatch) => {
       // const res = result.data;
       const res = await result.json();
       dispatch(getAllReservation(res));
-    }
+    },
   );
 };
 
-export const createEvent = (data, id) => async (dispatch) => {
+export const createReserve = (data) => async (dispatch) => {
   const response = await fetch(
-    `https://eventifyhub.herokuapp.com/events/${id}/reserves`,
+    'https://eventifyhub.herokuapp.com/reserves',
     {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(data),
-    }
+    },
   );
 
   if (response.status === 201) {

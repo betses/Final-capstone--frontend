@@ -3,21 +3,21 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
   ChevronDownIcon,
 } from '@heroicons/react/24/outline';
+// import { useNavigate } from 'react-router-dom';
 import { DateTime } from 'luxon';
 import { getAllEvents } from '../../redux/event/event';
 import background from '../../assets/danny-howe-bn-D2bCvpik-unsplash.jpg';
 
 export default function Reserve() {
   const events = useSelector((store) => store.event);
+  // const navigate = useNavigate();
   const user = useSelector((store) => store.user);
   const userID = user[0].id;
   const dispatch = useDispatch();
   const dateNow = DateTime.now().toFormat('MMMM / dd / yyyy');
   const [value, setValue] = useState({
     name: '',
-    date: dateNow,
     city: '',
-    user_id: userID,
   });
 
   const updateValue = (e) => {
@@ -37,8 +37,8 @@ export default function Reserve() {
     //   }
     // });
   };
-
   useEffect(() => {
+    // const exist = user.length;
     dispatch(getAllEvents());
   }, [dispatch]);
 

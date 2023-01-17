@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 import { Link, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -25,8 +26,6 @@ export default function Login() {
 
   useEffect(() => {
     const exist = user.length;
-    // console.log(exist);
-    // console.log(user);
     if (user != null && exist > 0) {
       const users = user[0];
       localStorage.setItem('user', JSON.stringify(users));
@@ -36,7 +35,7 @@ export default function Login() {
 
   return (
     <div className="flex w-full">
-      <div className='hidden w-2/4 bg-cover bg-center text-white md:block' style={{ backgroundImage: `url(${backgroundIMG})` }}>
+      <div className="hidden w-2/4 bg-cover bg-center text-white md:block" style={{ backgroundImage: `url(${backgroundIMG})` }}>
         <div className="flex flex-col items-center justify-center w-full h-full bg-black bg-opacity-25">
           <p className="text-5xl font-semibold px-6 text-center">Welcome Back!</p>
           <p className="px-6 text-center">To keep connected with us please login with your personal info</p>

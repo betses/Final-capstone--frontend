@@ -1,7 +1,18 @@
-import React from 'react';
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import EventCard from './my_reservation/ReservationCard';
 
 export default function Reservation() {
+  const user = useSelector((store) => store.user);
+  const navigate = useNavigate();
+  useEffect(() => {
+    const exist = Object.keys(user).length;
+    if (exist === 0) {
+      navigate('/login');
+    }
+  }, [navigate, user]);
+
   return (
     <div className="px-10">
       <h1 className="mt-4 mb-12 text-2xl font-extrabold text-gray-900 p md:text-5xl lg:text-6xl">

@@ -1,8 +1,9 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 import { Link, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { createUser } from '../../redux/login/userAuth';
-import logInBackgroundIMG from '../../assets/signup.jpg'
+import logInBackgroundIMG from '../../assets/signup.jpg';
 
 export default function Signup() {
   const user = useSelector((store) => store.user);
@@ -15,7 +16,6 @@ export default function Signup() {
     });
   };
   const handleClick = (event) => {
-    // 👇 "message" stores input field value
     event.preventDefault();
     dispatch(createUser(updated));
   };
@@ -44,7 +44,7 @@ export default function Signup() {
           </form>
         </div>
       </div>
-      <div className='hidden w-2/5 bg-cover bg-center text-white md:block' style={{ backgroundImage: `url(${logInBackgroundIMG})` }}>
+      <div className="hidden w-2/5 bg-cover bg-center text-white md:block" style={{ backgroundImage: `url(${logInBackgroundIMG})` }}>
         <div className="flex flex-col items-center justify-center w-full h-full bg-black bg-opacity-50">
           <p className="text-5xl font-bold">Hello, Friend!</p>
           <p>Enter your personal detail and start journy with us</p>
