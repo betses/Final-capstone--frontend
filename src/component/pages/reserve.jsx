@@ -1,26 +1,23 @@
-import { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import {
-  ChevronDownIcon,
-} from '@heroicons/react/24/outline';
-import { useNavigate } from 'react-router-dom';
-import { DateTime } from 'luxon';
-import { getEvents } from '../../redux/event/event';
-import { createReserve } from '../../redux/reserve/reserve';
-import background from '../../assets/danny-howe-bn-D2bCvpik-unsplash.jpg';
+import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { ChevronDownIcon } from "@heroicons/react/24/outline";
+import { useNavigate } from "react-router-dom";
+import { DateTime } from "luxon";
+import { getEvents } from "../../redux/event/event";
+import { createReserve } from "../../redux/reserve/reserve";
+import background from "../../assets/danny-howe-bn-D2bCvpik-unsplash.jpg";
 
-  const Reserve = () => {
+export default function Reserve() {
   const user = useSelector((store) => store.user);
-  const events = useSelector((store) => store.event);
+  const { events, event } = useSelector((store) => store.event);
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const [error, setError] = useState('');
-  const [success, setSuccess] = useState('');
-
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
   const [value, setValue] = useState({
-    name: '',
-    city: '',
-    event_id: '',
+    name: "",
+    city: "",
+    event_id: event.id.toString(),
   });
 
   const updateValue = (e) => {
@@ -32,10 +29,10 @@ import background from '../../assets/danny-howe-bn-D2bCvpik-unsplash.jpg';
 
   const submitHandler = (e) => {
     e.preventDefault();
-    const dateNow = DateTime.now().toFormat('yyyy-MM-dd');
+    const dateNow = DateTime.now().toFormat("yyyy-MM-dd");
     const exist = user.length;
     if (exist === 0) {
-      navigate('/login');
+      navigate("/login");
     } else {
       const userID = user[0].id;
       const currentValue = {
@@ -43,17 +40,17 @@ import background from '../../assets/danny-howe-bn-D2bCvpik-unsplash.jpg';
         date: dateNow,
         user_id: userID,
       };
-      dispatch(createReserve(currentValue))
-        .then((payload) => {
-          if (payload.status) {
-            document.querySelector('#create_form').reset();
-            setSuccess(payload.message);
-          } else {
-            setError(payload.message);
-          }
-        });
+      dispatch(createReserve(currentValue)).then((payload) => {
+        if (payload.status) {
+          document.querySelector("#create_form").reset();
+          setSuccess(payload.message);
+        } else {
+          setError(payload.message);
+        }
+      });
     }
   };
+​
   useEffect(() => {
     // const exist = user.length;
     dispatch(getEvents());
