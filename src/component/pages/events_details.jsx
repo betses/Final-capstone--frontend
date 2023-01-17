@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { useParams } from 'react-router';
 import { getAnEvent } from '../../redux/event/event';
-​
+
 const EventsDetails = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
@@ -11,11 +11,11 @@ const EventsDetails = () => {
   const {
     name, description, image, category, date, organizer, location, price,
   } = event;
-​
+
   useEffect(() => {
     dispatch(getAnEvent(id));
   }, [dispatch, id]);
-​
+
 
 return (
   <div className="container flex md:flex-row flex-col m-10 justify-evenly w-full gap-5">
@@ -68,5 +68,5 @@ return (
   </div>
 );
 };
-​
+
 export default EventsDetails;
