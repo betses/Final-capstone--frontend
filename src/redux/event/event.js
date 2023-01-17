@@ -13,7 +13,7 @@ export const addEvent = (payload) => ({
   type: ADD_EVENT,
   payload,
 });
-​
+
 export const anEvent = (payload) => ({
   type: GET_EVENT,
   payload,
@@ -22,7 +22,7 @@ export const allEvents = (payload) => ({
   type: GET_ALL_EVENTS,
   payload,
 });
-​
+
 export const createEvent = (data) => async (dispatch) => {
   const response = await fetch(url, {
     method: "POST",
@@ -37,7 +37,7 @@ export const createEvent = (data) => async (dispatch) => {
   }
   return { message: "the event has not been created", status: false };
 };
-​
+
 const eventurl = "https://eventifyhub.herokuapp.com/events";
 export const getEvent = () => async (dispatch) => {
   await fetch(eventurl).then(async (result) => {
@@ -46,14 +46,14 @@ export const getEvent = () => async (dispatch) => {
     dispatch(allEvents(me));
   });
 };
-​
+
 export const getEvents = () => async (dispatch) => {
   await fetch(eventurl).then(async (result) => {
     const res = await result.json();
     dispatch(allEvents(res));
   });
 };
-​
+
 export const getAnEvent = (id) => async (dispatch) => {
   await fetch(`https://eventifyhub.herokuapp.com/events/${id}`).then(
     async (result) => {
@@ -62,7 +62,7 @@ export const getAnEvent = (id) => async (dispatch) => {
     }
   );
 };
-​
+
 export const deleteEvent = (data) => (dispatch) => {
   fetch(`https://eventifyhub.herokuapp.com/events/${data}`, {
     method: "DELETE",
@@ -94,5 +94,5 @@ const eventReducer = (state = initialState, action) => {
       return state;
   }
 };
-​
+
 export default eventReducer;
