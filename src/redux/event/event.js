@@ -1,9 +1,13 @@
-const url = 'https://eventifyhub.herokuapp.com/events';
-const ADD_EVENT = 'ADD_EVENT';
-const GET_EVENTS = 'GET_EVENTS';
-const GET_ALL_EVENTS = 'GET_ALL_EVENTS';
-const local = JSON.parse(localStorage.getItem('user'));
-const events = [];
+const url = "https://eventifyhub.herokuapp.com/events";
+const ADD_EVENT = "ADD_EVENT";
+const GET_EVENT = "GET_EVENT";
+const GET_ALL_EVENTS = "GET_ALL_EVENTS";
+const local = JSON.parse(localStorage.getItem("user"));
+const initialState = {
+  event: {},
+  events: [],
+  message: null,
+};
 
 export const addEvent = (payload) => ({
   type: ADD_EVENT,
