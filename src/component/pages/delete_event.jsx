@@ -18,10 +18,6 @@ export default function DeleteEvent() {
     }
   }, [dispatch, navigate, user]);
 
-  useEffect(() => {
-
-  }, [navigate, user]);
-
   return (
     <div className="px-10">
       <h1 className="mt-4 mb-12 text-2xl font-extrabold text-gray-900 p md:text-5xl lg:text-6xl">

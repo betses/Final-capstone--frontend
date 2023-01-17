@@ -31,11 +31,11 @@ export default function CreateEvent() {
   };
 
   const submitHandler = () => {
-    const userID = user[0].id;
-    const exist = Object.keys(user).length;
+    const exist = user.length;
     if (exist === 0) {
       navigate('/login');
     } else {
+      const userID = user[0].id;
       dispatch(createEvent({
         ...value,
         user_id: userID,
