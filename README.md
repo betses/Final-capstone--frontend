@@ -181,6 +181,12 @@ Test the models
 - GitHub: [@betses](https://github.com/betses)
 - LinkedIn: [Betsegaw Sebsibe](https://www.linkedin.com/in/betsegaw-sebsibe/)
 - Twitter: [Betse_s](https://twitter.com/Betse_s)
+  
+  👤 **Momanyi Hassan**
+
+- GitHub: [@fullstop125](https://github.com/fullstop125)
+- LinkedIn: [momanyi-hassan](https://linkedin.com/in/momanyi-hassan-32a489180)
+- Twitter: [@moseshassany](https://twitter.com/moseshassany)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
