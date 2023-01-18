@@ -5,7 +5,7 @@ import { getEvent } from '../../redux/event/event';
 import EventCard from './delete_event/EventCard';
 
 export default function DeleteEvent() {
-  const events = useSelector((store) => store.event);
+  const {events} = useSelector((store) => store.event);
   const user = useSelector((store) => store.user);
   const navigate = useNavigate();
   const dispatch = useDispatch();
