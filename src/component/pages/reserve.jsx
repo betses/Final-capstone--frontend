@@ -69,14 +69,14 @@ const Reserve=()=> {
             <p>{error}</p>
             <div className="relative w-full mt-8">
               <select
-                value={value.event_id}
+                defaultValue={Object.keys(event).length === 0 ? 'default' : value.event_id}
                 onChange={updateValue}
                 id="event_id"
                 name="event_id"
                 className="bg-gray-300 w-full appearance-none p-4 border border-gray-300 text-gray-900 text-sm rounded-full focus:outline-none focus:bg-white focus:border-purple-500"
                 required
               >
-                <option disabled value="" hidden>
+                <option disabled value="default" hidden>
                   Choose Events
                 </option>
                 {events.map((event) => (
