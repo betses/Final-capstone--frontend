@@ -50,7 +50,7 @@ export default function Reservation() {
                 />
               </div>
               <p className="absolute px-3 py-1 text-xs font-semibold bg-white rounded-md left-4 top-4">
-                $120
+                $
                 {reservation.event.price}
               </p>
               <button
