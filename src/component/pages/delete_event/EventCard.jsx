@@ -10,7 +10,7 @@ import {
 } from '@heroicons/react/24/outline';
 import { deleteEvent } from '../../../redux/event/event';
 
-export default function EventCard({ event }) {
+const EventCard=({event})=> {
   const dispatch = useDispatch();
   const submitHandler = (id) => dispatch(deleteEvent(id));
   return (
@@ -68,3 +68,5 @@ export default function EventCard({ event }) {
     </div>
   );
 }
+
+export default EventCard;

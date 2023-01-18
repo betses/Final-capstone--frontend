@@ -13,7 +13,7 @@ import {
 import { useDispatch, useSelector } from 'react-redux';
 import { signOut } from '../../redux/login/user';
 
-function Sidenav() {
+const Sidenav=()=> {
   const user = useSelector((store) => store.user);
   const dispatch = useDispatch();
 

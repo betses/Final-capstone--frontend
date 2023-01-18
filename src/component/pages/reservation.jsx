@@ -10,8 +10,7 @@ import {
 } from '@heroicons/react/24/outline';
 import { getAReserve, deleteReserve } from '../../redux/reserve/reserve';
 
-export default function Reservation() {
-  // const local = JSON.parse(localStorage.getItem('user'));
+const Reservation=()=>{
   const user = useSelector((store) => store.user);
   const reservation = useSelector((store) => store.reserve);
   const navigate = useNavigate();
@@ -101,3 +100,5 @@ export default function Reservation() {
     </div>
   );
 }
+
+export default Reservation;

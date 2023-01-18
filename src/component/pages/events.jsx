@@ -10,7 +10,7 @@ import Carousel from '@itseasy21/react-elastic-carousel';
 import { Link } from 'react-router-dom';
 import { getEvents } from '../../redux/event/event';
 
-export default function Events() {
+const Events=()=> {
   const { events } = useSelector((store) => store.event);
   const dispatch = useDispatch();
   useEffect(() => {
@@ -89,3 +89,5 @@ export default function Events() {
     </div>
   );
 }
+
+export default Events;

@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import backgroundIMG from '../../assets/alfonso-scarpa-e12EkMYv44U-unsplash.jpg';
 import getUser from '../../redux/login/userAuth';
 
-export default function Login() {
+const Login =()=> {
   const user = useSelector((store) => store.user);
   const [updated, setUpdated] = useState('');
   const [error, setError] = useState('');
@@ -62,3 +62,5 @@ export default function Login() {
     </div>
   );
 }
+
+export default Login;

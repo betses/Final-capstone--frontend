@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getEvent } from '../../redux/event/event';
 import EventCard from './delete_event/EventCard';
 
-export default function DeleteEvent() {
+ const DeleteEvent=()=> {
   const {events} = useSelector((store) => store.event);
   const user = useSelector((store) => store.user);
   const navigate = useNavigate();
@@ -33,3 +33,5 @@ export default function DeleteEvent() {
     </div>
   );
 }
+
+export default DeleteEvent;

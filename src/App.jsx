@@ -9,7 +9,7 @@ import Login from './component/pages/login';
 import Signup from './component/pages/signup';
 import EventsDetails from './component/pages/events_details';
 
-function App() {
+const App = ()=> {
   return (
     <Router>
       <div className="min-h-screen w-full flex bg-gray-200">
