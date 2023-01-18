@@ -47,6 +47,7 @@ export const getEvent = () => async (dispatch) => {
   });
 };
 
+
 export const getEvents = () => async (dispatch) => {
   await fetch(eventurl).then(async (result) => {
     const res = await result.json();
