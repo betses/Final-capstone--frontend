@@ -214,10 +214,11 @@ If you like this project kindly ⭐️ the repo
 
 ## 🙏 Acknowledgments <a name="acknowledgements"></a>
 
-> Give credit to everyone who inspired your codebase.
+We would like to thank:
+- [Microverse](https://www.microverse.org/)
+- Code Reviewers
 
-- Microverse for giving us the opportunity
-- My coding partners during these capstone
+Original design from [Murat Korkmaz on Behance](https://www.behance.net/gallery/26425031/Vespa-Responsive-Redesign)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
