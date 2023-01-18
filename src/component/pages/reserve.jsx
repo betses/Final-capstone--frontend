@@ -17,7 +17,7 @@ export default function Reserve() {
   const [value, setValue] = useState({
     name: '',
     city: '',
-    event_id: event.id.toString(),
+    event_id: event.id
   });
 
   const updateValue = (e) => {
@@ -80,7 +80,7 @@ export default function Reserve() {
                   Choose Events
                 </option>
                 {events.map((event) => (
-                  <option key={event.id} value={event.id.toString()}>
+                  <option key={event.id} value={event.id}>
                     {event.name}
                   </option>
                 ))}
@@ -89,7 +89,7 @@ export default function Reserve() {
                 <ChevronDownIcon className='text-slate-700 h-4 w-4' />
               </div>
             </div>
-          
+
             <input
               onChange={updateValue}
               className='bg-gray-300 mt-3 appearance-none border-2 border-gray-300 rounded-full w-full p-4 text-sm text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500'
