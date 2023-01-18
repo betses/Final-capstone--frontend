@@ -17,7 +17,7 @@ export default function Reserve() {
   const [value, setValue] = useState({
     name: '',
     city: '',
-    event_id: event.id
+    event_id: event.id,
   });
 
   const updateValue = (e) => {
@@ -58,25 +58,25 @@ export default function Reserve() {
 
   return (
     <div
-      className='flex justify-end w-full bg-cover bg-center'
+      className="flex justify-end w-full bg-cover bg-center"
       style={{ backgroundImage: `url(${background})` }}
     >
-      <div className='w-full max-w-sm lg:max-w-lg backdrop-blur-sm bg-white/40 h-screen '>
-        <div className='flex flex-col px-14 lg:px-20 items-center justify-center h-full text-white'>
-          <p className='text-4xl font-semibold'>Reserve</p>
-          <form id='create_form' onSubmit={submitHandler}>
+      <div className="w-full max-w-sm lg:max-w-lg backdrop-blur-sm bg-white/40 h-screen ">
+        <div className="flex flex-col px-14 lg:px-20 items-center justify-center h-full text-white">
+          <p className="text-4xl font-semibold">Reserve</p>
+          <form id="create_form" onSubmit={submitHandler}>
             <p>{success}</p>
             <p>{error}</p>
-            <div className='relative w-full mt-8'>
+            <div className="relative w-full mt-8">
               <select
                 value={value.event_id}
                 onChange={updateValue}
-                id='event_id'
-                name='event_id'
-                className='bg-gray-300 w-full appearance-none p-4 border border-gray-300 text-gray-900 text-sm rounded-full focus:outline-none focus:bg-white focus:border-purple-500'
+                id="event_id"
+                name="event_id"
+                className="bg-gray-300 w-full appearance-none p-4 border border-gray-300 text-gray-900 text-sm rounded-full focus:outline-none focus:bg-white focus:border-purple-500"
                 required
               >
-                <option disabled value='' hidden>
+                <option disabled value="" hidden>
                   Choose Events
                 </option>
                 {events.map((event) => (
@@ -85,33 +85,33 @@ export default function Reserve() {
                   </option>
                 ))}
               </select>
-              <div className='absolute right-4 top-1/2 -translate-y-1/2'>
-                <ChevronDownIcon className='text-slate-700 h-4 w-4' />
+              <div className="absolute right-4 top-1/2 -translate-y-1/2">
+                <ChevronDownIcon className="text-slate-700 h-4 w-4" />
               </div>
             </div>
 
             <input
               onChange={updateValue}
-              className='bg-gray-300 mt-3 appearance-none border-2 border-gray-300 rounded-full w-full p-4 text-sm text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500'
-              type='text'
-              id='name'
-              placeholder='Name'
+              className="bg-gray-300 mt-3 appearance-none border-2 border-gray-300 rounded-full w-full p-4 text-sm text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+              type="text"
+              id="name"
+              placeholder="Name"
               required
             />
             <input
               onChange={updateValue}
-              className='bg-gray-300 mt-3 appearance-none border-2 border-gray-300 rounded-full w-full p-4 text-sm text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500'
-              type='text'
-              id='city'
-              placeholder='City'
+              className="bg-gray-300 mt-3 appearance-none border-2 border-gray-300 rounded-full w-full p-4 text-sm text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+              type="text"
+              id="city"
+              placeholder="City"
               required
             />
-            <p className='bg-gray-300 p-4 mt-3 rounded-full w-full text-sm  text-gray-700 hover:bg-white border-2 border-gray-300 cursor-pointer hover:border-purple-500'>
+            <p className="bg-gray-300 p-4 mt-3 rounded-full w-full text-sm  text-gray-700 hover:bg-white border-2 border-gray-300 cursor-pointer hover:border-purple-500">
               {DateTime.now().toFormat('MMMM / dd / yyyy')}
             </p>
             <button
-              type='submit'
-              className='bg-indigo-500 hover:bg-indigo-600 p-4 mt-14 rounded-full w-full'
+              type="submit"
+              className="bg-indigo-500 hover:bg-indigo-600 p-4 mt-14 rounded-full w-full"
             >
               Reserve
             </button>
