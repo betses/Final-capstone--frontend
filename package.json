@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@esbuild/linux-x64": "^0.17.2",
     "@heroicons/react": "^2.0.13",
     "@itseasy21/react-elastic-carousel": "^0.12.3",
     "@reduxjs/toolkit": "^1.9.1",
@@ -19,6 +20,7 @@
     "react-redux": "^8.0.5",
     "react-router": "^6.6.1",
     "react-router-dom": "^6.6.1",
+    "react-toastify": "^9.1.1",
     "vite": "^4.0.0"
   },
   "devDependencies": {
@@ -33,10 +35,10 @@
     "autoprefixer": "^10.4.13",
     "eslint": "^7.32.0",
     "eslint-config-airbnb": "^18.2.1",
-    "eslint-plugin-import": "^2.27.4",
+    "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-jsx-a11y": "^6.7.1",
     "eslint-plugin-prettier": "^4.2.1",
-    "eslint-plugin-react": "^7.32.0",
+    "eslint-plugin-react": "^7.32.1",
     "eslint-plugin-react-hooks": "^4.6.0",
     "postcss": "^8.4.20",
     "stylelint": "^13.13.1",

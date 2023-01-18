@@ -1,16 +1,25 @@
 const url = 'https://eventifyhub.herokuapp.com/events';
 const ADD_EVENT = 'ADD_EVENT';
-const GET_EVENTS = 'GET_EVENTS';
+const GET_EVENT = 'GET_EVENT';
+const GET_ALL_EVENTS = 'GET_ALL_EVENTS';
 const local = JSON.parse(localStorage.getItem('user'));
-const events = [];
+const initialState = {
+  event: {},
+  events: [],
+  message: null,
+};
 
 export const addEvent = (payload) => ({
   type: ADD_EVENT,
   payload,
 });
 
-export const getAllEvent = (payload) => ({
-  type: GET_EVENTS,
+export const anEvent = (payload) => ({
+  type: GET_EVENT,
+  payload,
+});
+export const allEvents = (payload) => ({
+  type: GET_ALL_EVENTS,
   payload,
 });
 
@@ -34,22 +43,24 @@ export const getEvent = () => async (dispatch) => {
   await fetch(eventurl).then(async (result) => {
     const res = await result.json();
     const me = res.filter((m) => m.user_id === local.id);
-    dispatch(getAllEvent(me));
+    dispatch(allEvents(me));
   });
 };
 
 export const getEvents = () => async (dispatch) => {
   await fetch(eventurl).then(async (result) => {
     const res = await result.json();
-    dispatch(getAllEvent(res));
+    dispatch(allEvents(res));
   });
 };
 
 export const getAnEvent = (id) => async (dispatch) => {
-  await fetch(`https://eventifyhub.herokuapp.com/events/${id}`).then(async (result) => {
-    const res = await result.json();
-    dispatch(getAllEvent(res));
-  });
+  await fetch(`https://eventifyhub.herokuapp.com/events/${id}`).then(
+    async (result) => {
+      const res = await result.json();
+      dispatch(anEvent(res));
+    },
+  );
 };
 
 export const deleteEvent = (data) => (dispatch) => {
@@ -62,12 +73,23 @@ export const deleteEvent = (data) => (dispatch) => {
   });
 };
 
-const eventReducer = (state = events, action) => {
+const eventReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_EVENT:
-      return [action.payload];
-    case GET_EVENTS:
-      return action.payload;
+      return {
+        ...state,
+        message: [action.payload],
+      };
+    case GET_EVENT:
+      return {
+        ...state,
+        event: action.payload,
+      };
+    case GET_ALL_EVENTS:
+      return {
+        ...state,
+        events: action.payload,
+      };
     default:
       return state;
   }

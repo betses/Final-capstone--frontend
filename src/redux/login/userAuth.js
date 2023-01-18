@@ -12,17 +12,20 @@ const getUser = (data) => async (dispatch) => {
   return dispatch(logInUser(arr));
 };
 
-export const createUser = (data) => (dispatch) => {
-  fetch('https://eventifyhub.herokuapp.com/users', {
+export const createUser = (data) => async (dispatch) => {
+  const response = await fetch('https://eventifyhub.herokuapp.com/users', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(data),
-  }).then(async (response) => {
-    if (response.status === 201) {
-      const final = await response.json();
-      dispatch(signUp(final));
-    }
   });
+  const final = await response.json();
+  if (response.status === 201) {
+    dispatch(signUp(final));
+  } else {
+    const responseUser = final.username[0];
+    return responseUser;
+  }
+  return 'finals';
 };
 
 export default getUser;

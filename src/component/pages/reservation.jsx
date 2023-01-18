@@ -1,99 +1,102 @@
-import React from 'react';
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { DateTime } from 'luxon';
+import {
+  TrashIcon,
+  MapPinIcon,
+  CalendarDaysIcon,
+  ClockIcon,
+} from '@heroicons/react/24/outline';
+import { getAReserve, deleteReserve } from '../../redux/reserve/reserve';
 
 export default function Reservation() {
+  // const local = JSON.parse(localStorage.getItem('user'));
+  const user = useSelector((store) => store.user);
+  const reservation = useSelector((store) => store.reserve);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const exist = user.length;
+    if (exist === 0) {
+      navigate('/login');
+    } else {
+      dispatch(getAReserve());
+    }
+  }, []);
+
+  const submitHandler = (event) => {
+    dispatch(deleteReserve(event.target.id));
+  };
   return (
-    <div className="">
-      <h1 className="mt-4 mb-12 text-3xl font-extrabold text-center text-gray-900 underline md:text-5xl lg:text-6xl">
+    <div className="px-10 pb-10 w-full xl:px-24">
+      <h1 className="mt-4 mb-12 text-2xl font-extrabold text-gray-900 p md:text-5xl lg:text-6xl">
         <span className="text-transparent bg-clip-text bg-gradient-to-r to-[#6ea9f0] from-[#5294e2]">
-          My
-        </span>{' '}
-        Reservation
+          My Events
+        </span>
       </h1>
-      <div className="flex flex-col items-center gap-10 xl:grid xl:grid-cols-2 xl:px-5 xl:gap-5">
-        <div className="flex flex-col items-center overflow-hidden bg-white border rounded-lg shadow-md md:flex-row md:max-w-3xl hover:bg-gray-100 md:h-64">
-          <img
-            className="object-cover w-full h-48 rounded-t-lg md:h-full md:w-48 md:rounded-none md:rounded-l-lg"
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmHnbUApCzja4EcVY9_Z7CjzbSqpsOlu7o-Gy_rGc7xy9CX6wns0jYx1rTW1aI0z13xXI&usqp=CAU"
-            alt=""
-          />
-          <div className="flex flex-col justify-between p-4 leading-normal">
-            <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900">
-              Noteworthy technology acquisitions 2021
-            </h5>
-            <p className="mb-3 font-normal text-gray-700">
-              Here are the biggest enterprise technology acquisitions of 2021 so
-              far, in reverse chronological order.
-            </p>
-            <div className="flex items-center mb-3">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth="1.5"
-                stroke="currentColor"
-                className="w-5 h-5"
+      <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-3">
+        {reservation.map((reservation) => (
+          <div key={reservation.id} className="flex flex-col bg-white border border-gray-200 rounded-lg shadow-md hover:scale-[102%] transition duration-200 ease-in-out">
+            <div className="relative block shrink-0">
+              <div className="relative w-full pt-[100%] hover:bg-slate-300">
+                <img
+                  className="absolute inset-0 h-full rounded-t-lg cursor-pointer hover:brightness-75"
+                  src={
+                    reservation.event.image || 'https://flowbite.com/docs/images/blog/image-1.jpg'
+                  }
+                  alt=""
+                />
+              </div>
+              <p className="absolute px-3 py-1 text-xs font-semibold bg-white rounded-md left-4 top-4">
+                $
+                {reservation.event.price}
+              </p>
+              <button
+                type="button"
+                id={reservation.id}
+                className="absolute p-2 text-red-500 bg-white rounded-full top-4 right-4"
+                onClick={submitHandler}
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"
-                />
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"
-                />
-              </svg>
-              <span className="font-normal text-gray-400">
-                Gion Hotel, Addis Ababa
-              </span>
+                <TrashIcon className="w-5 h-5" />
+              </button>
             </div>
-            <button
-              type="button"
-              className="w-40 px-4 py-2.5 bg-white-600 text-gray-400 hover:text-gray-500 text-sm rounded shadow-md border-2 border-gray-400 hover:shadow-lg transition duration-150 ease-in-out"
-            >
-              Cancel Reserve
-            </button>
+            <div className="flex flex-col items-start flex-1 p-5">
+              <div className="flex justify-between gap-2 w-full pb-3">
+                <a href=".">
+                  <h5 className="text-2xl font-bold tracking-tight  text-gray-900 ">
+                    {reservation.event.name}
+                  </h5>
+                </a>
+                <div className="flex items-center text-gray-700">
+                  <ClockIcon className="w-4 h-4" />
+                  <span className="pl-1 text-xs font-normal">
+                    {DateTime.fromISO(reservation.event.time).toFormat('h:ma')}
+                  </span>
+                </div>
+              </div>
+              {/* min-h-[100px] to make the coponent fixed size */}
+              <p className="flex-1 mb-3 leading-tight text-sm font-normal text-gray-700 ">
+                {reservation.event.description}
+              </p>
+              <div className="flex justify-between w-full mb-3">
+                <div className="flex items-center text-gray-400">
+                  <MapPinIcon className="w-5 h-5" />
+                  <span className="text-xs font-normal">
+                    {reservation.event.location}
+                  </span>
+                </div>
+                <div className="flex items-center text-gray-400">
+                  <CalendarDaysIcon className="w-5 h-5" />
+                  <span className="pl-1 text-xs font-normal">
+                    {reservation.event.date}
+                  </span>
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
-        <a
-          href="."
-          className="flex flex-col items-center overflow-hidden bg-white border rounded-lg shadow-md md:flex-row md:max-w-3xl m hover:bg-gray-100 lg:h-64"
-        >
-          <img
-            className="object-cover w-full h-48 rounded-t-lg md:h-full md:w-48 md:rounded-none md:rounded-l-lg"
-            src="https://scontent.fadd2-1.fna.fbcdn.net/v/t1.6435-9/89495936_2725639097485755_5230245816827904000_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=730e14&_nc_ohc=pUPqdM8j09kAX8tBK9q&_nc_ht=scontent.fadd2-1.fna&oh=00_AfDCERbMqrsbnCc9C-tYBkB05VyYtdWjoksXgmRJoILU8Q&oe=63E0C23E"
-            alt=""
-          />
-          <div className="flex flex-col justify-between p-4 leading-normal">
-            <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900">
-              Noteworthy technology acquisitions 2021
-            </h5>
-            <p className="mb-3 font-normal text-gray-700">
-              Here are the biggest enterprise technology acquisitions of 2021 so
-              far, in reverse chronological order.
-            </p>
-          </div>
-        </a>
-        <a
-          href="."
-          className="flex flex-col items-center overflow-hidden bg-white border rounded-lg shadow-md md:flex-row md:max-w-3xl m hover:bg-gray-100 lg:h-64"
-        >
-          <img
-            className="object-cover w-full h-48 rounded-t-lg md:h-full md:w-48 md:rounded-none md:rounded-l-lg"
-            src="https://scontent.fadd2-1.fna.fbcdn.net/v/t1.6435-9/89495936_2725639097485755_5230245816827904000_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=730e14&_nc_ohc=pUPqdM8j09kAX8tBK9q&_nc_ht=scontent.fadd2-1.fna&oh=00_AfDCERbMqrsbnCc9C-tYBkB05VyYtdWjoksXgmRJoILU8Q&oe=63E0C23E"
-            alt=""
-          />
-          <div className="flex flex-col justify-between p-4 leading-normal">
-            <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900">
-              Noteworthy technology acquisitions 2021
-            </h5>
-            <p className="mb-3 font-normal text-gray-700">
-              Here are the biggest enterprise technology acquisitions of 2021 so
-              far, in reverse chronological order.
-            </p>
-          </div>
-        </a>
+        ))}
       </div>
     </div>
   );
