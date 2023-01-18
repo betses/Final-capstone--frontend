@@ -39,8 +39,8 @@ export const createEvent = (data) => async (dispatch) => {
 };
 
 const eventurl = 'https://eventifyhub.herokuapp.com/events';
-export const getEvent = () => async (dispatch) => {
-  await fetch(eventurl).then(async (result) => {
+export const getEvent = () => (dispatch) => {
+  fetch(eventurl).then(async (result) => {
     const res = await result.json();
     const me = res.filter((m) => m.user_id === local.id);
     dispatch(allEvents(me));
