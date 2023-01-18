@@ -170,7 +170,8 @@ Test the models
 ## 👥 Authors <a name="authors"></a>
 
 > Mention all of the collaborators of this project.
-> 👤 **Yunus Ali**
+  
+ 👤 **Yunus Ali**
 
 - GitHub: [@IamYunusALi](https://github.com/iamyunusali)
 - Twitter: [@IamYunusAli](https://twitter.com/iamyunusali)
