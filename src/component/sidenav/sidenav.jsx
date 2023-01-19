@@ -13,7 +13,7 @@ import {
 import { useDispatch, useSelector } from 'react-redux';
 import { signOut } from '../../redux/login/user';
 
-function Sidenav() {
+const Sidenav = () => {
   const user = useSelector((store) => store.user);
   const dispatch = useDispatch();
 
@@ -98,11 +98,11 @@ function Sidenav() {
           </NavLink>
         ))}
       </ul>
-      <div className="flex items-center justify-center w-full h-16 mt-auto">
+      <div className="hidden md:flex items-center justify-center w-full h-16 mt-auto">
         <p className="text-xs">&copy; 2023 Eventify</p>
       </div>
     </aside>
   );
-}
+};
 
 export default Sidenav;

@@ -1,7 +1,6 @@
 const ADD_EVENT_RESERVE = 'ADD_EVENT_RESERVE';
 const GET_EVENTS_RESERVE = 'GET_EVENTS_RESERVE';
 const GET_AN_EVENTS_RESERVE = 'GET_AN_EVENTS_RESERVE';
-const local = JSON.parse(localStorage.getItem('user'));
 const reservation = [];
 
 export const addReserve = (payload) => ({
@@ -22,16 +21,16 @@ export const getAnReservation = (payload) => ({
 export const getAllReserve = () => async (dispatch) => {
   await fetch('https://eventifyhub.herokuapp.com/reserves').then(
     async (result) => {
-      // const res = result.data;
       const res = await result.json();
       dispatch(getAllReservation(res));
     },
   );
 };
 const reserveurl = 'https://eventifyhub.herokuapp.com/reserves';
-export const getAReserve = () => async (dispatch) => {
-  await fetch(reserveurl).then(async (result) => {
+export const getAReserve = () => (dispatch) => {
+  fetch(reserveurl).then(async (result) => {
     const res = await result.json();
+    const local = JSON.parse(localStorage.getItem('user'));
     const me = res.filter((m) => m.user_id === local.id);
     dispatch(getAnReservation(me));
   });

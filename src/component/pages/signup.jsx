@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { createUser } from '../../redux/login/userAuth';
 import logInBackgroundIMG from '../../assets/signup.jpg';
 
-export default function Signup() {
+const Signup=()=> {
   const user = useSelector((store) => store.user);
   const [updated, setUpdated] = useState('');
   const dispatch = useDispatch();
@@ -64,3 +64,5 @@ export default function Signup() {
     </div>
   );
 }
+
+export default Signup;

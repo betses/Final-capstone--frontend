@@ -10,8 +10,7 @@ import {
 } from '@heroicons/react/24/outline';
 import { getAReserve, deleteReserve } from '../../redux/reserve/reserve';
 
-export default function Reservation() {
-  // const local = JSON.parse(localStorage.getItem('user'));
+const Reservation = () => {
   const user = useSelector((store) => store.user);
   const reservation = useSelector((store) => store.reserve);
   const navigate = useNavigate();
@@ -24,10 +23,11 @@ export default function Reservation() {
     } else {
       dispatch(getAReserve());
     }
-  }, []);
+  }, [dispatch, navigate, user]);
 
-  const submitHandler = (event) => {
-    dispatch(deleteReserve(event.target.id));
+  const clickHandler = (id) => {
+    console.log(id);
+    dispatch(deleteReserve(id));
   };
   return (
     <div className="px-10 pb-10 w-full xl:px-24">
@@ -55,9 +55,8 @@ export default function Reservation() {
               </p>
               <button
                 type="button"
-                id={reservation.id}
                 className="absolute p-2 text-red-500 bg-white rounded-full top-4 right-4"
-                onClick={submitHandler}
+                onClick={() => clickHandler(reservation.id)}
               >
                 <TrashIcon className="w-5 h-5" />
               </button>
@@ -101,3 +100,5 @@ export default function Reservation() {
     </div>
   );
 }
+
+export default Reservation;
