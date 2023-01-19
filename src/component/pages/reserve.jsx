@@ -3,17 +3,18 @@ import { useDispatch, useSelector } from 'react-redux';
 import { ChevronDownIcon } from '@heroicons/react/24/outline';
 import { useNavigate } from 'react-router-dom';
 import { DateTime } from 'luxon';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { getEvents } from '../../redux/event/event';
 import { createReserve } from '../../redux/reserve/reserve';
 import background from '../../assets/danny-howe-bn-D2bCvpik-unsplash.jpg';
 
-const Reserve=()=> {
+const Reserve = () => {
   const user = useSelector((store) => store.user);
   const { events, event } = useSelector((store) => store.event);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [error, setError] = useState('');
-  const [success, setSuccess] = useState('');
   const [value, setValue] = useState({
     name: '',
     city: '',
@@ -43,9 +44,27 @@ const Reserve=()=> {
       dispatch(createReserve(currentValue)).then((payload) => {
         if (payload.status) {
           document.querySelector('#create_form').reset();
-          setSuccess(payload.message);
+          toast.success('The event has been reserved!', {
+            position: 'top-right',
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: 'light',
+          });
         } else {
-          setError(payload.message);
+          toast('You have already reserved this event!', {
+            position: 'top-right',
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: 'light',
+          });
         }
       });
     }
@@ -65,7 +84,7 @@ const Reserve=()=> {
         <div className="flex flex-col px-14 lg:px-20 items-center justify-center h-full text-white">
           <p className="text-4xl font-semibold">Reserve</p>
           <form id="create_form" onSubmit={submitHandler}>
-            <p>{success}</p>
+            <ToastContainer />
             <p>{error}</p>
             <div className="relative w-full mt-8">
               <select
@@ -120,7 +139,6 @@ const Reserve=()=> {
       </div>
     </div>
   );
-}
-
+};
 
 export default Reserve;

@@ -9,26 +9,24 @@ import Login from './component/pages/login';
 import Signup from './component/pages/signup';
 import EventsDetails from './component/pages/events_details';
 
-const App = ()=> {
-  return (
-    <Router>
-      <div className="min-h-screen w-full flex bg-gray-200">
-        <Sidenav />
-        <Routes>
-          <Route>
-            <Route path="/" element={<Events />} />
-            <Route path="/my-reservations" element={<Reservation />} />
-            <Route path="/reserve" element={<Reserve />} />
-            <Route path="/create-event" element={<CreateEvent />} />
-            <Route path="/delete-event" element={<DeleteEvent />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/signup" element={<Signup />} />
-            <Route path="/details/:id" element={<EventsDetails />} />
-          </Route>
-        </Routes>
-      </div>
-    </Router>
-  );
-}
+const App = () => (
+  <Router>
+    <div className="min-h-screen w-full flex bg-gray-200">
+      <Sidenav />
+      <Routes>
+        <Route>
+          <Route path="/" element={<Events />} />
+          <Route path="/my-reservations" element={<Reservation />} />
+          <Route path="/reserve" element={<Reserve />} />
+          <Route path="/create-event" element={<CreateEvent />} />
+          <Route path="/delete-event" element={<DeleteEvent />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/details/:id" element={<EventsDetails />} />
+        </Route>
+      </Routes>
+    </div>
+  </Router>
+);
 
 export default App;
