@@ -63,6 +63,11 @@ export const getAnEvent = (id) => async (dispatch) => {
   );
 };
 
+export const removeAnEvent = () => (dispatch) => {
+  const empity = {};
+  dispatch(anEvent(empity));
+};
+
 export const deleteEvent = (data) => (dispatch) => {
   fetch(`https://eventifyhub.herokuapp.com/events/${data}`, {
     method: 'DELETE',
