@@ -23,7 +23,7 @@ const Reservation=()=>{
     } else {
       dispatch(getAReserve());
     }
-  }, []);
+  }, [dispatch, navigate, user]);
 
   const submitHandler = (event) => {
     dispatch(deleteReserve(event.target.id));
