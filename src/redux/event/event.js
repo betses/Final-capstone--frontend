@@ -2,7 +2,6 @@ const url = 'https://eventifyhub.herokuapp.com/events';
 const ADD_EVENT = 'ADD_EVENT';
 const GET_EVENT = 'GET_EVENT';
 const GET_ALL_EVENTS = 'GET_ALL_EVENTS';
-const local = JSON.parse(localStorage.getItem('user'));
 const initialState = {
   event: {},
   events: [],
@@ -42,6 +41,7 @@ const eventurl = 'https://eventifyhub.herokuapp.com/events';
 export const getEvent = () => (dispatch) => {
   fetch(eventurl).then(async (result) => {
     const res = await result.json();
+    const local = JSON.parse(localStorage.getItem('user'));
     const me = res.filter((m) => m.user_id === local.id);
     dispatch(allEvents(me));
   });
