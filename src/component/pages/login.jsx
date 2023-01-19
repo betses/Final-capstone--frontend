@@ -25,7 +25,7 @@ const Login =()=> {
   };
 
   useEffect(() => {
-    const exist = user.length;
+    const exist = Object.keys(user).length;
     if (user != null && exist > 0) {
       const users = user[0];
       localStorage.setItem('user', JSON.stringify(users));
