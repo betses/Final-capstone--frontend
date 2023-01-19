@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import backgroundIMG from '../../assets/alfonso-scarpa-e12EkMYv44U-unsplash.jpg';
 import getUser from '../../redux/login/userAuth';
 
-export default function Login() {
+const Login =()=> {
   const user = useSelector((store) => store.user);
   const [updated, setUpdated] = useState('');
   const [error, setError] = useState('');
@@ -25,7 +25,7 @@ export default function Login() {
   };
 
   useEffect(() => {
-    const exist = user.length;
+    const exist = Object.keys(user).length;
     if (user != null && exist > 0) {
       const users = user[0];
       localStorage.setItem('user', JSON.stringify(users));
@@ -62,3 +62,5 @@ export default function Login() {
     </div>
   );
 }
+
+export default Login;

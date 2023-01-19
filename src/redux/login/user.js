@@ -1,7 +1,7 @@
 const SIGNUP_USER = 'SIGNUP_USER';
 const LOGIN_USER = 'LOGIN_USER';
 const SIGNOUT_USER = 'SIGNOUT_USER';
-const local = localStorage.getItem('user');
+const local = (localStorage.getItem('user') === 'undefined') ? false : localStorage.getItem('user');
 let user = [];
 if (local) {
   user = [JSON.parse(local)];

@@ -55,14 +55,13 @@ After you're finished please remove all the comments and instructions!
 
 # 📖 [Eventify APP] <a name="about-project"></a>
 
->
-**[Eventify APP]**
+> **[Eventify APP]**
 
 ## 🛠 Built With <a name="built-with"></a>
 
 ### Tech Stack <a name="tech-stack"></a>
 
-> Describe the tech stack and include only the relevant sections that apply to your project.
+> Eventify is a Full-stack web application. that makes easier to post, reserve and delete events on a click of button. This is the Front-end(UI) of the System.
 
 <details>
   <summary>Client / Frontend</a></summary>
@@ -92,21 +91,21 @@ After you're finished please remove all the comments and instructions!
 > Describe between 1-3 key features of the application.
 
 - **[View Events]**'
- view different events.
+  view different events.
 
-- **[Sign Up  and Login ]**'
- sign up and login to your account.
+- **[Sign Up and Login ]**'
+  sign up and login to your account.
 
- - **[Reserve events]**'
- reserve events that interest you.
+- **[Reserve events]**'
+  reserve events that interest you.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- LIVE DEMO -->
 
-## 🚀 Live Demo API Endpoint<a name="live-demo"></a>
+## 🚀 Live Demo<a name="live-demo"></a>
 
-> Add a link to your deployed project.
+> [Click here](https://eventify-cap.netlify.app/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -159,9 +158,10 @@ npm run dev
 To Test the project, execute the following command:
 
 Test the models
-```sh
-````
 
+```sh
+
+```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -170,11 +170,17 @@ Test the models
 ## 👥 Authors <a name="authors"></a>
 
 > Mention all of the collaborators of this project.
-👤 **Yunus Ali**
+> 👤 **Yunus Ali**
 
 - GitHub: [@IamYunusALi](https://github.com/iamyunusali)
 - Twitter: [@IamYunusAli](https://twitter.com/iamyunusali)
 - LinkedIn: [Yunus Ali](https://linkedin.com/in/iamyunusali)
+
+👤 **Betsegaw Sebsibe**
+
+- GitHub: [@betses](https://github.com/betses)
+- LinkedIn: [Betsegaw Sebsibe](https://www.linkedin.com/in/betsegaw-sebsibe/)
+- Twitter: [Betse_s](https://twitter.com/Betse_s)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -203,11 +209,11 @@ If you like this project kindly ⭐️ the repo
 ## 🙏 Acknowledgments <a name="acknowledgements"></a>
 
 > Give credit to everyone who inspired your codebase.
+
 - Microverse for giving us the opportunity
 - My coding partners during these capstone
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 
 <!-- LICENSE -->
 

@@ -10,10 +10,14 @@ import Carousel from '@itseasy21/react-elastic-carousel';
 import { Link } from 'react-router-dom';
 import { getEvents } from '../../redux/event/event';
 
-export default function Events() {
+
+const Events=()=> {
+  const user = useSelector((store) => store.user);
   const { events } = useSelector((store) => store.event);
   const dispatch = useDispatch();
   useEffect(() => {
+    const users = user[0];
+    localStorage.setItem('user', JSON.stringify(users));
     dispatch(getEvents());
   }, [dispatch]);
 
@@ -89,3 +93,5 @@ export default function Events() {
     </div>
   );
 }
+
+export default Events;

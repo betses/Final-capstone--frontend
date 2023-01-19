@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { createEvent } from '../../redux/event/event';
 
-export default function CreateEvent() {
+const CreateEvent=()=> {
   const user = useSelector((store) => store.user);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -218,3 +218,6 @@ export default function CreateEvent() {
     </div>
   );
 }
+
+
+export default CreateEvent;
