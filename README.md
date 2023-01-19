@@ -57,6 +57,20 @@ After you're finished please remove all the comments and instructions!
 
 > **[Eventify APP]**
 
+
+
+![Capture](https://user-images.githubusercontent.com/106348671/213451322-ea012ae0-b77e-402e-9fae-a8878dfcc5e8.JPG)
+![Capture1](https://user-images.githubusercontent.com/106348671/213451606-11f92406-26df-40c3-8aea-28fa210684c4.JPG)
+![Capture2](https://user-images.githubusercontent.com/106348671/213451696-c4162384-88ad-4991-992a-affa0c3dcabd.JPG)
+
+
+> ## [Kanban Board](https://github.com/users/IamYunusAli/projects/3/views/1)
+### Initial Kanban Board
+![KanBan](https://user-images.githubusercontent.com/32224137/210531113-c0fe92aa-c9a4-40d8-a5a0-69a17a0c74c3.png)
+### Final Kanban Board
+![Capture3](https://user-images.githubusercontent.com/106348671/213452335-76d003ed-29ce-4838-ae7c-7aa8a805aa51.JPG)
+
+
 ## 🛠 Built With <a name="built-with"></a>
 
 ### Tech Stack <a name="tech-stack"></a>
