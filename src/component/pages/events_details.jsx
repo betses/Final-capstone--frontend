@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { useParams } from 'react-router';
-import { getAnEvent } from '../../redux/event/event';
+import { getAnEvent, removeAnEvent } from '../../redux/event/event';
 
 const EventsDetails = () => {
   const dispatch = useDispatch();
@@ -16,10 +16,14 @@ const EventsDetails = () => {
     dispatch(getAnEvent(id));
   }, [dispatch, id]);
 
+  const handleClick = () => {
+    dispatch(removeAnEvent());
+  };
+
   return (
     <div className="container flex md:flex-row flex-col m-10 justify-evenly w-full gap-5">
       <Link to="/" className="place-self-end">
-        <button type="button" className="bg-green-500 mt-40 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-r-full">
+        <button type="button" onClick={handleClick} className="bg-green-500 mt-40 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-r-full">
           Back
         </button>
       </Link>

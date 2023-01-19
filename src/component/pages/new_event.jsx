@@ -2,14 +2,14 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { createEvent } from '../../redux/event/event';
 
-const CreateEvent=()=> {
+const CreateEvent = () => {
   const user = useSelector((store) => store.user);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [success, setSuccess] = useState('');
-  const [error, setError] = useState('');
 
   const [value, setValue] = useState({
     name: '',
@@ -42,9 +42,27 @@ const CreateEvent=()=> {
       })).then((payload) => {
         if (payload.status) {
           document.querySelector('#create_form').reset();
-          setSuccess(payload.message);
+          toast.success('The event has been Created!', {
+            position: 'top-right',
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: 'light',
+          });
         } else {
-          setError(payload.message);
+          toast('The event has not been Created!', {
+            position: 'top-right',
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: 'light',
+          });
         }
       });
     }
@@ -52,15 +70,14 @@ const CreateEvent=()=> {
 
   return (
     <div className="flex justify-center w-full">
-      <form className=" p-5 lg:mt-10 bg-white h-min rounded-lg" id="create_form">
+      <form className=" p-5 lg:mt-10 bg-white h-min rounded-lg" onSubmit={submitHandler} id="create_form">
         <h1 className="mt-4 mb-12 text-2xl font-extrabold text-gray-900 md:text-4xl lg:text-5xl">
           <span className="text-transparent bg-clip-text bg-gradient-to-r to-[#6ea9f0] from-[#5294e2]">
             Add
           </span>
           Event
         </h1>
-        <p>{error}</p>
-        <p>{success}</p>
+        <ToastContainer />
         <div className="relative z-0 w-full mb-6 group">
           <input
             onChange={updateValue}
@@ -208,8 +225,7 @@ const CreateEvent=()=> {
           placeholder="Description"
         />
         <button
-          onClick={submitHandler}
-          type="button"
+          type="submit"
           className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
         >
           Submit
@@ -217,7 +233,6 @@ const CreateEvent=()=> {
       </form>
     </div>
   );
-}
-
+};
 
 export default CreateEvent;

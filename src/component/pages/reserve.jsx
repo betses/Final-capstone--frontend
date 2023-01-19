@@ -14,7 +14,6 @@ const Reserve = () => {
   const { events, event } = useSelector((store) => store.event);
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const [error, setError] = useState('');
   const [value, setValue] = useState({
     name: '',
     city: '',
@@ -85,7 +84,6 @@ const Reserve = () => {
           <p className="text-4xl font-semibold">Reserve</p>
           <form id="create_form" onSubmit={submitHandler}>
             <ToastContainer />
-            <p>{error}</p>
             <div className="relative w-full mt-8">
               <select
                 defaultValue={Object.keys(event).length === 0 ? 'default' : value.event_id}
